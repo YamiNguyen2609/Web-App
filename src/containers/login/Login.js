@@ -1,73 +1,86 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-export default class Login extends Component {
-  state = {}
+import { loginWithEmail } from '../../redux/user/redux/loginWithEmail'
+
+export class Login extends Component {
+  state = {
+    username: '',
+    password: ''
+  }
+
+  _onUserChange = username => {
+    this.setState({ username })
+  }
+
+  _onPasswordChange = password => {
+    this.setState({ password })
+  }
+
+  _onPressLogin = () => {
+    const { username, password } = this.state
+    this.props.loginWithEmail(username, password)
+  }
+
   render() {
+    const { username, password } = this.state
+
     return (
-      <div classname='container' id='login'>
-        <div classname='row justify-content-center'>
-          <div classname='col-md-8'>
-            <div classname='card-group'>
-              <div classname='card p-4'>
-                <div classname='card-body'>
+      <div className='container' id='login'>
+        <div className='row justify-content-center'>
+          <div className='col-md-8'>
+            <div className='card-group'>
+              <div className='card p-4'>
+                <div className='card-body'>
                   <h1>Login</h1>
-                  <p classname='text-muted'>Sign In to your account</p>
-                  <div classname='input-group mb-3'>
-                    <div classname='input-group-prepend'>
-                      <span classname='input-group-text'>
-                        <i classname='icon-user'></i>
+                  <p className='text-muted'>Sign In to your account</p>
+                  <div className='input-group mb-3'>
+                    <div className='input-group-prepend'>
+                      <span className='input-group-text'>
+                        <i className='icon-user'></i>
                       </span>
                     </div>
                     <input
-                      classname='form-control'
+                      className='form-control'
                       type='text'
+                      value={username}
+                      onChange={e => {
+                        this._onUserChange(e.target.value)
+                      }}
                       placeholder='Username'
                     />
                   </div>
-                  <div classname='input-group mb-4'>
-                    <div classname='input-group-prepend'>
-                      <span classname='input-group-text'>
-                        <i classname='icon-lock'></i>
+                  <div className='input-group mb-4'>
+                    <div className='input-group-prepend'>
+                      <span className='input-group-text'>
+                        <i className='icon-lock'></i>
                       </span>
                     </div>
                     <input
-                      classname='form-control'
+                      className='form-control'
                       type='password'
                       placeholder='Password'
+                      value={password}
+                      onChange={e => {
+                        this._onPasswordChange(e.target.value)
+                      }}
                     />
                   </div>
-                  <div classname='row'>
-                    <div classname='col-6'>
-                      <button classname='btn btn-primary px-4' type='button'>
+                  <div className='row'>
+                    <div className='col-6'>
+                      <button
+                        className='btn btn-primary px-4'
+                        type='button'
+                        onClick={this._onPressLogin}
+                      >
                         Login
                       </button>
                     </div>
-                    <div classname='col-6 text-right'>
-                      <button classname='btn btn-link px-0' type='button'>
+                    <div className='col-6 text-right'>
+                      <button className='btn btn-link px-0' type='button'>
                         Forgot password?
                       </button>
                     </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                classname='card text-white bg-primary py-5 d-md-down-none'
-                style={{ width: '44%' }}
-              >
-                <div classname='card-body text-center'>
-                  <div>
-                    <h2>Sign up</h2>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua.
-                    </p>
-                    <button
-                      classname='btn btn-primary active mt-3'
-                      type='button'
-                    >
-                      Register Now!
-                    </button>
                   </div>
                 </div>
               </div>
@@ -78,3 +91,14 @@ export default class Login extends Component {
     )
   }
 }
+
+const mapStateToProp = state => ({})
+
+const mapDispatchToProp = {
+  loginWithEmail
+}
+
+export default connect(
+  mapStateToProp,
+  mapDispatchToProp
+)(Login)
