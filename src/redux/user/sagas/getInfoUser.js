@@ -6,7 +6,7 @@ import { getAccount } from '../../../helpers/LocalStorage'
 function* getInfoUser(action) {
   try {
     const user = getAccount()
-    if (!user) {
+    if (user) {
       put(onSuccess(user))
     } else {
       yield put(onFailure(''))

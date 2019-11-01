@@ -2,7 +2,8 @@ import axios from 'axios'
 import _ from 'lodash'
 
 const api = axios.create({
-  baseURL: 'http://45.119.83.78:7740/api'
+  baseURL: 'http://45.119.83.78:7740/api',
+  headers: { 'Access-Control-Allow-Origin': '*' }
 })
 api.interceptors.response.use(
   response => response.data,

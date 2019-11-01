@@ -8,20 +8,25 @@ import { getInfo } from '../redux/user/redux/loginWithEmail'
 import Login from '../containers/login'
 
 export class index extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.getInfo()
-    document.getElementsByTagName('body')[0].className =
-      'app flex-row align-items-center'
+    if (this.props.user) {
+      document.getElementsByTagName('body')[0].className =
+        'app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show'
+    } else {
+      document.getElementsByTagName('body')[0].className =
+        'app flex-row align-items-center'
+    }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.user != nextProps.user && nextProps.user) {
-      var className =
+    if (nextProps.user) {
+      document.getElementsByTagName('body')[0].className =
         'app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show'
     } else {
-      className = 'app flex-row align-items-center'
+      document.getElementsByTagName('body')[0].className =
+        'app flex-row align-items-center'
     }
-    document.getElementsByTagName('body')[0].className = className
   }
 
   render() {

@@ -17,22 +17,12 @@ export default class Main extends Component {
           <li key={'3'} className='breadcrumb-item active'>
             Dashboard
           </li>
-          <li key={'4'} className='breadcrumb-menu d-md-down-none'>
-            <div className='btn-group' role='group' aria-label='Button group'>
-              <a className='btn' href='#'>
-                <i className='icon-speech'></i>
-              </a>
-              <a className='btn' href='./'>
-                <i className='icon-graph'></i>  Dashboard
-              </a>
-              <a className='btn' href='#'>
-                <i className='icon-settings'></i>  Settings
-              </a>
-            </div>
-          </li>
         </ol>
         <div className='container-fluid' id='main'>
           <Switch>
+            <Route path='/'>
+              <RenderMain component='Home' name='Trang chủ' />
+            </Route>
             <Route path='/Home'>
               <RenderMain component='Home' name='Trang chủ' />
             </Route>

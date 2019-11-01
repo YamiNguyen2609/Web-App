@@ -3,4 +3,10 @@ const ApiResponseStatusCode = {
   AUTHORIZED: 401
 }
 
-export { ApiResponseStatusCode }
+const config = {
+  clientId: 'MobileApp',
+  clientSecret: 'CpExNwQEyVeY3CD1jGtl2mj6OBdBllcG',
+  grantType: 'client_credentials'
+}
+
+export { ApiResponseStatusCode, config }

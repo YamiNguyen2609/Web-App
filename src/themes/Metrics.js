@@ -1,14 +1,5 @@
-import { Dimensions, Platform } from 'react-native'
-import iPhoneXHelper from './iPhoneXHelper'
-
-const { width, height } = Dimensions.get('window')
-const screenRatio = width / height
-
 // Used via Metrics.baseMargin
 const metrics = {
-  screenWidth: width,
-  screenHeight: height,
-  screenRatio,
   margin: {
     huge: 20,
     regular: 10,
@@ -30,8 +21,6 @@ const metrics = {
     tiny: 2
   },
   divider: 0.5,
-  navHeight: Platform.OS ? 64 : 56,
-  statusBarHeight: iPhoneXHelper.isIPhoneX() ? 44 : 22,
   btnHeight: 50
 }
 

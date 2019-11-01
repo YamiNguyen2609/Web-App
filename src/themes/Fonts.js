@@ -1,9 +1,7 @@
-import { Platform } from 'react-native'
-const isIOS = Platform.OS === 'ios'
 const type = {
   // Regular font
-  regular: isIOS ? 'Helveticaneue' : 'helveticaneue',
-  bold: isIOS ? 'Helveticaneue-Bold' : 'helveticaneuebold'
+  regular: 'Helveticaneue',
+  bold: 'Helveticaneue-Bold'
 }
 
 const size = {

@@ -7,7 +7,7 @@ const loginWithEmail = async (username, password) => {
   const data = new FormData()
   data.append('UserName', username)
   data.append('Password', password)
-  // return axios.post(LOGIN_WITH_EMAIL, data)
+  //return axios.post(LOGIN_WITH_EMAIL, data)
 
   return {
     status: 'OK',
