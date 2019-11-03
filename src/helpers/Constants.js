@@ -1,12 +1,18 @@
 const ApiResponseStatusCode = {
   SUCCESS: 200,
   AUTHORIZED: 401
-}
+};
+
+const action = {
+  CREATE: 0,
+  UPDATE: 1,
+  DELETE: 2
+};
 
 const config = {
-  clientId: 'MobileApp',
-  clientSecret: 'CpExNwQEyVeY3CD1jGtl2mj6OBdBllcG',
-  grantType: 'client_credentials'
-}
+  clientId: "MobileApp",
+  clientSecret: "CpExNwQEyVeY3CD1jGtl2mj6OBdBllcG",
+  grantType: "client_credentials"
+};
 
-export { ApiResponseStatusCode, config }
+export { ApiResponseStatusCode, config, action };
