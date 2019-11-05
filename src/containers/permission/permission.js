@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 
-export default class permission extends Component {
-  state = {};
+export default class Permission extends Component {
+  state = {}
   render() {
-    return <div>day la permission</div>;
+    return <div>day la permission</div>
   }
 }

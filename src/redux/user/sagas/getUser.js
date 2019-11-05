@@ -1,16 +1,18 @@
 import { takeEvery, put } from 'redux-saga/effects'
 
-import { ACTION, onFailure, onSuccess } from '../redux/loginWithEmail'
+import { ACTION, onFailure, onSuccess } from '../redux/getUser'
 import userAPI from '../../../services/UserAPI.js'
 import { ApiResponseStatusCode } from '../../../helpers/Constants'
-import { sessionLogin } from '../../../helpers/LocalStorage'
+import { showLoading, hideLoading } from '../../app'
+import { Colors } from '../../../themes'
 
 function* loginWithEmail(action) {
   try {
-    var response = yield userAPI.loginWithEmail(action.email, action.password)
-    if (response.status_code === ApiResponseStatusCode.SUCCESS) {
+    yield put(showLoading())
+    var response = yield userAPI.getUsers()
+    if (response.status_code == ApiResponseStatusCode.SUCCESS) {
       yield put(onSuccess(response.response))
-      sessionLogin(response.response)
+      yield put(hideLoading())
     } else {
       yield put(onFailure(response.status))
     }

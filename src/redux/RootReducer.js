@@ -1,11 +1,17 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux'
 
-import loginWithEmail from "./user/redux/loginWithEmail";
-import handle from "../redux/app/redux/handle";
+import app from './app'
+import loginWithEmail from './user/redux/loginWithEmail'
+import getModule from './module/redux/getModule'
+import getUser from './user/redux/getUser'
+import getRole from './role/redux/getRole'
 
 const rootReducer = combineReducers({
+  app,
   loginWithEmail,
-  handle
-});
+  getModule,
+  getUser,
+  getRole
+})
 
-export default rootReducer;
+export default rootReducer

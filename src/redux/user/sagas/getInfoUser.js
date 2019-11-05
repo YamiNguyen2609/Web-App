@@ -16,10 +16,6 @@ function* getInfoUser(action) {
   }
 }
 
-function* sleep(time) {
-  yield new Promise(resolve => setTimeout(resolve, time))
-}
-
 export default function* saga() {
   yield takeEvery(ACTION_INFO, getInfoUser)
 }

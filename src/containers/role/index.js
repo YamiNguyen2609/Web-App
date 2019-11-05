@@ -1,3 +1,3 @@
-import role from "./role";
+import role from './Role'
 
-export default role;
+export default role

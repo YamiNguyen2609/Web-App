@@ -1,3 +1,3 @@
-import permission from "./permission";
+import permission from './Permission'
 
-export default permission;
+export default permission

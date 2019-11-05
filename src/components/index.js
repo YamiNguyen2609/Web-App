@@ -1,3 +1,6 @@
-import InputField from './InputField'
+import Pagination from './Pagination'
+import DataTable from './DataTable'
+import Loading from './Loading'
+import Modal from './Modal'
 
-export { InputField }
+export { Pagination, DataTable, Loading, Modal }

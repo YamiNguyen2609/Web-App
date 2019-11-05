@@ -1,5 +1,7 @@
 // Used via Metrics.baseMargin
 const metrics = {
+  windowHeight: window.innerHeight,
+  windowWidth: window.innerWidth,
   margin: {
     huge: 20,
     regular: 10,

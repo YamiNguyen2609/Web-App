@@ -9,12 +9,8 @@ export class Login extends Component {
     password: ''
   }
 
-  _onUserChange = username => {
-    this.setState({ username })
-  }
-
-  _onPasswordChange = password => {
-    this.setState({ password })
+  _onChange = evt => {
+    this.setState({ [evt.target.name]: evt.target.value })
   }
 
   _onPressLogin = () => {
@@ -43,10 +39,8 @@ export class Login extends Component {
                     <input
                       className='form-control'
                       type='text'
-                      value={username}
-                      onChange={e => {
-                        this._onUserChange(e.target.value)
-                      }}
+                      name='username'
+                      onChange={this._onChange}
                       placeholder='Username'
                     />
                   </div>
@@ -60,10 +54,8 @@ export class Login extends Component {
                       className='form-control'
                       type='password'
                       placeholder='Password'
-                      value={password}
-                      onChange={e => {
-                        this._onPasswordChange(e.target.value)
-                      }}
+                      name='password'
+                      onChange={this._onChange}
                     />
                   </div>
                   <div className='row'>

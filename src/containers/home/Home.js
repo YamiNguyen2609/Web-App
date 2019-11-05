@@ -11,15 +11,7 @@ export class Home extends Component {
   }
 
   render() {
-    return (
-      <button
-        className='btn btn-link px-0'
-        type='button'
-        onClick={this._onLogout}
-      >
-        Đăng xuất
-      </button>
-    )
+    return <div>Home</div>
   }
 }
 
