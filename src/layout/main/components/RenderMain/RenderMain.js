@@ -6,7 +6,6 @@ export default class RenderMain extends Component {
   }
 
   UNSAFE_componentWillReceiveProps = nextProps => {
-    console.log(2)
     document.title = nextProps.name
     import(
       '../../../../containers/' +
@@ -18,7 +17,6 @@ export default class RenderMain extends Component {
   }
 
   componentDidMount() {
-    console.log(1)
     document.title = this.props.name
     import(
       '../../../../containers/' +

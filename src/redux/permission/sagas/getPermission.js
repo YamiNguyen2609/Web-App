@@ -1,13 +1,13 @@
 import { takeEvery, put } from 'redux-saga/effects'
 
-import { ACTION, onFailure, onSuccess } from '../redux/getModule'
-import moduleAPI from '../../../services/ModuleAPI'
+import { ACTION, onFailure, onSuccess } from '../redux/getPermission'
+import permissionAPI from '../../../services/PermissionAPI'
 import { ApiResponseStatusCode } from '../../../helpers/Constants'
 import { showLoading, hideLoading } from '../../app'
 
-function* getModule(action) {
+function* getRole(action) {
   try {
-    var response = yield moduleAPI.getData(action.userId)
+    var response = yield permissionAPI.getPermissions()
     if (response.status_code === ApiResponseStatusCode.SUCCESS) {
       yield put(onSuccess(response.response))
       //yield put(hideLoading())
@@ -20,5 +20,5 @@ function* getModule(action) {
 }
 
 export default function* saga() {
-  yield takeEvery(ACTION, getModule)
+  yield takeEvery(ACTION, getRole)
 }

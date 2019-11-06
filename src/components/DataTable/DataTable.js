@@ -11,7 +11,9 @@ export default class DataTable extends Component {
       <ReactTable
         {...this.props}
         PaginationComponent={Pagination}
-        defaultPageSize={10}
+        defaultPageSize={
+          this.props.data.length > 5 ? 5 : this.props.data.length
+        }
         showPagination={true}
         showPaginationTop={false}
         showPaginationBottom={true}

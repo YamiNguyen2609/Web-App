@@ -3,6 +3,10 @@ import React, { Component } from 'react'
 export default class UserForm extends Component {
   state = {}
   render() {
-    return <div>{this.props.test}</div>
+    return (
+      <div class='modal-body'>
+        <p>One fine body…</p>
+      </div>
+    )
   }
 }

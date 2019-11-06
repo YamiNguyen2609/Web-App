@@ -5,13 +5,15 @@ import loginWithEmail from './user/redux/loginWithEmail'
 import getModule from './module/redux/getModule'
 import getUser from './user/redux/getUser'
 import getRole from './role/redux/getRole'
+import getPermission from './permission/redux/getPermission'
 
 const rootReducer = combineReducers({
   app,
   loginWithEmail,
   getModule,
   getUser,
-  getRole
+  getRole,
+  getPermission
 })
 
 export default rootReducer

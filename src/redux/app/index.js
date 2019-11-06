@@ -4,6 +4,9 @@ const CLEAR_BREADCRUMB = 'CLEAR_BREADCRUMB'
 const SHOW_LOADING = 'SHOW_LOADING'
 const HIDE_LOADING = 'HIDE_LOADING'
 
+const SHOW_MODAL = 'SHOW_MODAL'
+const HIDE_MODAL = 'HIDE_MODAL'
+
 const replaceScreen = name => ({
   type: BREADCRUMB,
   name
@@ -18,6 +21,18 @@ const hideLoading = () => ({
   type: HIDE_LOADING
 })
 
+const showModal = (components, params, title, size) => ({
+  type: SHOW_MODAL,
+  components,
+  params,
+  title,
+  size
+})
+
+const hideModal = () => ({
+  type: HIDE_MODAL
+})
+
 const clearScreen = () => ({
   type: CLEAR_BREADCRUMB
 })
@@ -25,7 +40,12 @@ const clearScreen = () => ({
 const initialState = {
   breadcrumb: '',
   isShowLoading: false,
-  backdropColor: ''
+  backdropColor: '',
+  isShowModal: false,
+  components: undefined,
+  params: undefined,
+  modalSize: '',
+  title: undefined
 }
 
 export default (state = initialState, action) => {
@@ -47,9 +67,30 @@ export default (state = initialState, action) => {
         backdropColor: ''
       }
 
+    case SHOW_MODAL:
+      console.log(action)
+      return {
+        ...state,
+        isShowModal: true,
+        components: action.components,
+        params: action.params,
+        modalSize: action.size,
+        title: action.title
+      }
+
+    case HIDE_MODAL:
+      return {
+        ...state,
+        isShowModal: false,
+        components: undefined,
+        params: undefined,
+        modalSize: undefined,
+        title: undefined
+      }
+
     default:
       return state
   }
 }
 
-export { replaceScreen, clearScreen, showLoading, hideLoading }
+export { showModal, hideModal, clearScreen, showLoading, hideLoading }

@@ -1,8 +1,6 @@
 import axios from './AxiosUserConfig'
 import FormData from 'form-data'
 
-const LOGIN_WITH_EMAIL = '/Account/Login'
-
 const Roles = [
   { id: 1, name: 'Administrator' },
   { id: 2, name: 'Editor' },

@@ -90,6 +90,7 @@
   background-color: #a9d9a0;
 }
 
-.Table__pagination {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+.ReactTable,
+.ReactTable .rt-tbody .rt-td {
+  border: unset;
 }

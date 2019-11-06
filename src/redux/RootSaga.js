@@ -5,6 +5,7 @@ import getInfoUser from './user/sagas/getInfoUser'
 import getModule from './module/sagas/getModule'
 import getUser from './user/sagas/getUser'
 import getRole from './role/sagas/getRole'
+import getPermission from './permission/sagas/getPermission'
 
 export default function* rootSaga() {
   yield all([
@@ -12,6 +13,7 @@ export default function* rootSaga() {
     fork(getInfoUser),
     fork(getModule),
     fork(getUser),
-    fork(getRole)
+    fork(getRole),
+    fork(getPermission)
   ])
 }
