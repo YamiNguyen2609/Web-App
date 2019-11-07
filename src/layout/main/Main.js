@@ -46,12 +46,16 @@ export class Main extends Component {
         <div className='container-fluid' id='main' style={{ padding: '30px' }}>
           <Switch>
             <Route exact path='/'>
-              <RenderMain component='Home' name='Trang chủ' />
+              <RenderMain component='Home' link='/' name='Trang chủ' />
             </Route>
             {modules.map(e => {
               return (
                 <Route path={e.link} key={e.id}>
-                  <RenderMain component={e.ControllerName} name={e.title} />
+                  <RenderMain
+                    component={e.ControllerName}
+                    link={e.link}
+                    name={e.title}
+                  />
                 </Route>
               )
             })}

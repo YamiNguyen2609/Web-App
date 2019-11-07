@@ -7,6 +7,10 @@ export default class RenderMain extends Component {
 
   UNSAFE_componentWillReceiveProps = nextProps => {
     document.title = nextProps.name
+    document.querySelectorAll('nav ul.nav li a.nav-link').forEach(e => {
+      e.classList.remove('active')
+      if (e.getAttribute('href') === nextProps.link) e.classList.add('active')
+    })
     import(
       '../../../../containers/' +
         nextProps.component.toLowerCase() +
@@ -18,6 +22,10 @@ export default class RenderMain extends Component {
 
   componentDidMount() {
     document.title = this.props.name
+    document.querySelectorAll('nav ul.nav li a.nav-link').forEach(e => {
+      e.classList.remove('active')
+      if (e.getAttribute('href') === this.props.link) e.classList.add('active')
+    })
     import(
       '../../../../containers/' +
         this.props.component.toLowerCase() +

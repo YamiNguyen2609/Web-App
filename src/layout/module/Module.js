@@ -73,7 +73,7 @@ export class Module extends Component {
     const { modules } = this.props
     return (
       <ul className='sidebar'>
-        <nav className='sidebar-nav' id='module'>
+        <nav className='sidebar-nav'>
           <ModuleTable data={modules} />
         </nav>
       </ul>

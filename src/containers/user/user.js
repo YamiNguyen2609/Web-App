@@ -14,7 +14,6 @@ export class User extends Component {
   }
 
   targetForm = () => {
-    console.log('dasdasd')
     this.props.showModal(
       'user/components/UserForm',
       {

@@ -5,25 +5,38 @@ export default class RoleForm extends Component {
     return (
       <div className='card'>
         <div className='card-body'>
-          <div class='row'>
-            <div class='col-sm-12'>
-              <div class='form-group'>
-                <label for='name'>Chi tiết quyền</label>
-                <input class='form-control' name='name' type='text' />
+          <div className='row'>
+            <div className='col-sm-12'>
+              <div className='form-group'>
+                <label>Chi tiết quyền</label>
+                <input
+                  className='form-control'
+                  name='name'
+                  type='text'
+                  onChange={this.props.onTextChange}
+                />
               </div>
             </div>
-            <div class='col-sm-12'>
-              <div class='form-group'>
-                <label for='name'>Controller</label>
-                <input class='form-control' name='name' type='text' />
+            <div className='col-sm-12'>
+              <div className='form-group'>
+                <label>Controller</label>
+                <input
+                  className='form-control'
+                  name='controllerName'
+                  type='text'
+                  onChange={this.props.onTextChange}
+                />
               </div>
             </div>
-            <div class='col-sm-12'>
-              <div class='float-right'>
+            <div className='col-sm-12'>
+              <div className='float-right'>
                 <button className='btn btn-light active mr-2'>
                   <i className='fa fa-remove mr-1'></i>Huỷ bỏ
                 </button>
-                <button className='btn btn-primary '>
+                <button
+                  className='btn btn-primary'
+                  onClick={this.props.onCreate}
+                >
                   <i className='fa fa-plus mr-1'></i>Thêm mới
                 </button>
               </div>

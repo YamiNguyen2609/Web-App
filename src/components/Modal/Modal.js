@@ -6,7 +6,6 @@ export default class Modal extends Component {
   }
 
   UNSAFE_componentWillReceiveProps = nextProps => {
-    console.log('modal render', nextProps)
     if (nextProps.component) {
       import('../../containers/' + nextProps.component + '/index.js').then(
         component => {
@@ -17,7 +16,6 @@ export default class Modal extends Component {
   }
 
   componentDidMount() {
-    console.log('modal', this.props)
     if (this.props.component) {
       import('../../containers/' + this.props.component + '/index.js').then(
         component => {
@@ -39,9 +37,9 @@ export default class Modal extends Component {
         <div className={'modal-dialog' + (size ? size : '')} role='document'>
           <div className='modal-content'>
             <div className='modal-header'>
-              <h4 class='modal-title'>{title}</h4>
+              <h4 className='modal-title'>{title}</h4>
               <button
-                class='close'
+                className='close'
                 type='button'
                 data-dismiss='modal'
                 aria-label='Close'

@@ -68,7 +68,6 @@ export default (state = initialState, action) => {
       }
 
     case SHOW_MODAL:
-      console.log(action)
       return {
         ...state,
         isShowModal: true,

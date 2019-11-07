@@ -1,5 +1,6 @@
 import { fork, all } from 'redux-saga/effects'
 
+import handle from './app/sagas/HandleSaga'
 import loginWithEmail from './user/sagas/loginWithEmail'
 import getInfoUser from './user/sagas/getInfoUser'
 import getModule from './module/sagas/getModule'
@@ -14,6 +15,7 @@ export default function* rootSaga() {
     fork(getModule),
     fork(getUser),
     fork(getRole),
-    fork(getPermission)
+    fork(getPermission),
+    fork(handle)
   ])
 }
