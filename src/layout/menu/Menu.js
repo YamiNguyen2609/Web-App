@@ -23,11 +23,11 @@ function SetModuleTable(data, parentId = 0) {
   const items =
     parentId > 0
       ? data.filter(e => {
-          return e.parentId === parentId && e.id !== e.parentId
-        })
+        return e.parentId === parentId && e.id !== e.parentId
+      })
       : data.filter(e => {
-          return e.id === e.parentId
-        })
+        return e.id === e.parentId
+      })
   if (items) {
     return items.map(el => {
       const ul =
@@ -45,11 +45,11 @@ function SetModuleTable(data, parentId = 0) {
               {el.title}
             </Link>
           ) : (
-            <a className={ul ? 'nav-dropdown-toggle nav-link' : 'nav-link'}>
-              <i className={'nav-icon mr-1 ' + el.icon}></i>
-              {el.title}
-            </a>
-          )}
+              <a className={ul ? 'nav-dropdown-toggle nav-link' : 'nav-link'}>
+                <i className={'nav-icon mr-1 ' + el.icon}></i>
+                {el.title}
+              </a>
+            )}
 
           {ul ? (
             <ul className='nav-dropdown-items'>
@@ -62,7 +62,7 @@ function SetModuleTable(data, parentId = 0) {
   }
 }
 
-export class Module extends Component {
+export class Menu extends Component {
   state = {}
 
   componentDidMount() {
@@ -94,4 +94,4 @@ const mapDispatchToProp = {
 export default connect(
   mapStateToProp,
   mapDispatchToProp
-)(Module)
+)(Menu)

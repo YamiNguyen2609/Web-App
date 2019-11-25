@@ -47,12 +47,36 @@ var Modules = [
   },
   {
     id: 5,
-    title: 'Test',
+    title: 'Module',
+    icon: 'cui-list',
+    ControllerName: 'module',
+    parentId: 1,
+    link: '/module'
+  },
+  {
+    id: 6,
+    title: 'Người dùng',
+    icon: 'cui-user',
+    ControllerName: 'User',
+    parentId: 6,
+    link: '/user'
+  },
+  {
+    id: 7,
+    title: 'Quyền truy cập',
+    icon: 'cui-shield',
+    ControllerName: 'role',
+    parentId: 6,
+    link: '/role'
+  },
+  {
+    id: 8,
+    title: 'Chi tiết quyền truy cập',
     icon: 'cui-user-follow',
-    ControllerName: '',
-    parentId: 5,
-    link: '#'
-  }
+    ControllerName: 'permission',
+    parentId: 6,
+    link: '/permission'
+  },
 ]
 
 var Users = [

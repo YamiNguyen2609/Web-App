@@ -1,5 +1,5 @@
 import React from 'react'
-import Module from '../module'
+import Menu from '../menu'
 import Main from '../main'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { Metrics } from '../../themes'
@@ -15,7 +15,7 @@ export default function Body() {
       }}
     >
       <Router>
-        <Module />
+        <Menu />
         <Main />
       </Router>
     </div>
