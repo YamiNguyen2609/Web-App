@@ -55,7 +55,7 @@ var Modules = [
   },
   {
     id: 6,
-    title: 'Người dùng',
+    title: 'Test1',
     icon: 'cui-user',
     ControllerName: 'User',
     parentId: 6,
@@ -63,7 +63,7 @@ var Modules = [
   },
   {
     id: 7,
-    title: 'Quyền truy cập',
+    title: 'Test2',
     icon: 'cui-shield',
     ControllerName: 'role',
     parentId: 6,
@@ -71,7 +71,7 @@ var Modules = [
   },
   {
     id: 8,
-    title: 'Chi tiết quyền truy cập',
+    title: 'Test3',
     icon: 'cui-user-follow',
     ControllerName: 'permission',
     parentId: 6,

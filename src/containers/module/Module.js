@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { DndProvider } from 'react-dnd'
+import HTML5Backend from 'react-dnd-html5-backend'
 
 import styles from './styles'
 import TreeForm from './components/TreeForm'
@@ -12,7 +14,7 @@ export class Module extends Component {
 
         const { modules } = this.props
 
-        return (
+        return modules.length > 0 ? (
             <div className='row'>
                 <div className='col-md-5'>
                     <Form modules={modules} />
@@ -20,12 +22,14 @@ export class Module extends Component {
                 <div className='col-md-7'>
                     <div className='card'>
                         <div className='card-body'>
-                            <TreeForm data={modules} />
+                            <DndProvider backend={HTML5Backend}>
+                                <TreeForm data={modules} />
+                            </DndProvider>
                         </div>
                     </div>
                 </div>
             </div>
-        );
+        ) : <div></div>;
     }
 }
 

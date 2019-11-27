@@ -42,12 +42,10 @@
 
     .mn-list .mn-list {
         padding-left: 30px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.7s;
     }
-
-/*.mn-collapsed .mn-list {
-    display: none;
-
-}*/
 
 .mn-item,
 .mn-empty,
@@ -108,6 +106,11 @@
     line-height: 2.4rem;
     margin-left: 2.5rem;
     font-size: 14px;
+    user-select: none; /* supported by Chrome and Opera */
+   -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTMLxs */
+   -moz-user-select: none; /* Firefox */
+   -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
 .mn-item > button, .mn-search > button {
