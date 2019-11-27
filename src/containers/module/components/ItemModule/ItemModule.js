@@ -1,7 +1,17 @@
 import React, { Component } from 'react'
 import { useDrag, useDrop } from 'react-dnd'
 
+
 const ItemModule = ({ data, collpaseCard, moveCard, findCard, parentId }) => {
+    const items =
+        parentId > 0
+            ? data.filter(e => {
+                return e.parentId === parentId && e.id !== e.parentId
+            })
+            : data.filter(e => {
+                return e.id === e.parentId
+            })
+
     const originalIndex = findCard(parentId).index
     const [{ isDragging }, drag] = useDrag({
         item: { type: "card", parentId, originalIndex },
@@ -20,36 +30,35 @@ const ItemModule = ({ data, collpaseCard, moveCard, findCard, parentId }) => {
         },
     })
     const opacity = isDragging ? 0 : 1
-    const items =
-        parentId > 0
-            ? data.filter(e => {
-                return e.parentId === parentId && e.id !== e.parentId
-            })
-            : data.filter(e => {
-                return e.id === e.parentId
-            })
+
+    const onMouseDown = {}
+
     if (items) {
         return items.map(el => {
+
+
             const ul =
                 data.filter(e => {
                     return e.parentId === el.id && e.id !== e.parentId
                 }).length
             return el.parentId == el.id ?
                 (
-                    <li key={el.id} className='mn-item' ref={node => drag(drop(node))} style={{ opacity }}>
-                        <button data-action={!el.isShow ? "show" : "hidden"} onClick={() => collpaseCard(el)} type="button"></button>
+                    <li key={el.id} className='mn-item' onMouseDown={}>
+                        {ul > 0 ? (
+                            <button data-action={!el.isShow ? "show" : "hidden"} onClick={() => collpaseCard(el)} type="button"></button>
+                        ) : null}
                         <a className='mn-handle'>
                             <span>{el.title}</span>
                         </a>
                         {ul > 0 ?
                             <ol className='mn-list' style={el.isShow ? { maxHeight: ul * 50 } : null}>
-                                <ItemModule data={data} onCollapse={collpaseCard} parentId={el.id} moveCard={moveCard} findCard={findCard} />
+                                <ItemModule data={data} collpaseCard={collpaseCard} parentId={el.id} moveCard={moveCard} findCard={findCard} />
                             </ol> : null
                         }
                     </li>
                 ) :
                 (
-                    <li key={el.id} className='mn-item' ref={node => drag(drop(node))} style={{ opacity }} >
+                    <li key={el.id} className='mn-item' >
                         <a className='mn-handle'>
                             <span>{el.title}</span>
                         </a>
