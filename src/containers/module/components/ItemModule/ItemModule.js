@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { useDrag, useDrop } from 'react-dnd'
 
 
-const ItemModule = ({ data, collpaseCard, moveCard, findCard, parentId }) => {
+const ItemModule = ({ data, collpaseCard, moveCard, findCard, parentId, id }) => {
     const items =
         parentId > 0
             ? data.filter(e => {
@@ -12,30 +12,19 @@ const ItemModule = ({ data, collpaseCard, moveCard, findCard, parentId }) => {
                 return e.id === e.parentId
             })
 
-    const originalIndex = findCard(parentId).index
-    const [{ isDragging }, drag] = useDrag({
-        item: { type: "card", parentId, originalIndex },
-        collect: monitor => ({
-            isDragging: monitor.isDragging(),
-        }),
-    })
-    const [, drop] = useDrop({
-        accept: "card",
-        canDrop: () => false,
-        hover({ id: draggedId }) {
-            if (draggedId !== parentId) {
-                const { index: overIndex } = findCard(parentId)
-                moveCard(draggedId, overIndex)
-            }
-        },
-    })
-    const opacity = isDragging ? 0 : 1
+    const originalIndex = findCard(id).index
 
-    const onMouseDown = {}
+    var result = undefined
 
     if (items) {
-        return items.map(el => {
+        result = items.map(el => {
 
+            const [{ isDragging }, drag] = useDrag({
+                item: { type: "card", id, originalIndex },
+                collect: monitor => ({
+                    isDragging: monitor.isDragging(),
+                }),
+            })
 
             const ul =
                 data.filter(e => {
@@ -43,7 +32,7 @@ const ItemModule = ({ data, collpaseCard, moveCard, findCard, parentId }) => {
                 }).length
             return el.parentId == el.id ?
                 (
-                    <li key={el.id} className='mn-item' onMouseDown={}>
+                    <li key={el.id} className='mn-item' ref={node => drag(node)}>
                         {ul > 0 ? (
                             <button data-action={!el.isShow ? "show" : "hidden"} onClick={() => collpaseCard(el)} type="button"></button>
                         ) : null}
@@ -52,13 +41,13 @@ const ItemModule = ({ data, collpaseCard, moveCard, findCard, parentId }) => {
                         </a>
                         {ul > 0 ?
                             <ol className='mn-list' style={el.isShow ? { maxHeight: ul * 50 } : null}>
-                                <ItemModule data={data} collpaseCard={collpaseCard} parentId={el.id} moveCard={moveCard} findCard={findCard} />
+                                <ItemModule data={data} collpaseCard={collpaseCard} parentId={el.id} id={el.id} moveCard={moveCard} findCard={findCard} />
                             </ol> : null
                         }
                     </li>
                 ) :
                 (
-                    <li key={el.id} className='mn-item' >
+                    <li key={el.id} className='mn-item' ref={drag}>
                         <a className='mn-handle'>
                             <span>{el.title}</span>
                         </a>
@@ -66,6 +55,8 @@ const ItemModule = ({ data, collpaseCard, moveCard, findCard, parentId }) => {
                 )
         })
     }
+
+    return <div></div>
 };
 
 export default ItemModule;
