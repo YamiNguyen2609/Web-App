@@ -1,55 +1,56 @@
-import React, { Component } from 'react'
-import { DropTarget } from 'react-dnd'
+import React, { useState } from 'react'
+import { useDrop } from 'react-dnd'
+import update from 'immutability-helper'
 
 import '../../../../assets/css/menutable.css'
-import ItemModule from '../ItemModule'
+import ListModule from '../ListModule'
 
-class TreeForm extends Component {
-    state = { cards: [] }
 
-    componentDidMount() {
-        this.setState({ cards: this.props.data })
-    }
 
-    collpaseCard = (item) => {
-        console.log(item)
-        this.setState({
-            cards: this.state.cards.map(e => {
-                return {
-                    ...e,
-                    isShow: e.id == item.id ? !e.isShow : e.isShow
+const TreeForm = ({ data, id }) => {
+    const [cards, setCards] = useState(data)
+
+    const collpaseCard = (item) => {
+        const index = cards.map(e => { return e.id }).indexOf(item.id)
+        setCards(
+            update(cards, {
+                [index]: {
+                    isShow: { $apply: () => { return !item.isShow } }
                 }
-            })
-        })
+            }),
+        )
     }
 
-    findCard = id => {
-        const card = this.state.cards.filter(c => c.id === id)[0]
+    const moveCard = (id, atIndex) => {
+        const { card, index } = findCard(id)
+        setCards(
+            update(cards, {
+                $splice: [
+                    [index, 1],
+                    [atIndex, 0, card],
+                ],
+            }),
+        )
+    }
+    const findCard = id => {
+        const card = cards.filter(c => c.id === id)[0]
         return {
             card,
-            index: this.state.cards.indexOf(card),
+            index: cards.indexOf(card),
         }
     }
 
-    moveCard = (id, atIndex) => {
+    const [, drop] = useDrop({ accept: "card" })
 
-    }
-
-    render() {
-
-        const { id } = this.props
-        const { cards } = this.state
-
-        return cards.length > 0 ? (
-            <div className='mn-tree mn-scroll'>
-                <div className='mn' id={id}>
-                    <ol className='mn-list' >
-                        <ItemModule data={cards} collpaseCard={this.collpaseCard} findCard={this.findCard} moveCard={this.moveCard} />
-                    </ol>
-                </div>
+    return (
+        <div className='mn-tree mn-scroll' ref={drop}>
+            <div className='mn' id={id}>
+                <ol className='mn-list'>
+                    <ListModule data={cards} findCard={findCard} collpaseCard={collpaseCard} moveCard={moveCard} />
+                </ol>
             </div>
-        ) : null
-    }
+        </div>
+    )
 }
 
 export default TreeForm;

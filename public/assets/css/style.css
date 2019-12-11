@@ -14712,6 +14712,7 @@ html[dir="rtl"] .aside-menu-show .aside-menu {
     width: 100%;
     text-align: center;
     background-color: #fff;
+    top: 0
   }
   .app-header .navbar-toggler {
     color: #fff;
